@@ -1,0 +1,197 @@
+
+
+
+MongoDb:
+No Sql Database.
+Stores data in Json Format.
+Mongo Db is not for transactional Operations.
+It is best for Read only data.
+It is 100% fatser than RDMS systems.
+It supports both structured and non-structured data.
+
+Mongo Db:
+Need to Create the database.
+Database is set of collection.
+Collection is set of Documents.
+Documents is set of properties.
+
+MySql:
+Need to Create the database.
+Database is set of tables.
+Tables is set of Rows.
+Rows is set of columns.
+
+
+Open cmd :
+1.Type mongsh:
+
+2.Show Databases;
+Show dbs;
+
+3.Open/Create the Database;
+use mydb;
+
+4.show the  currently opened Database;
+db;
+
+5.Display the collection(table):
+show collections;
+
+6.Drop databases:
+db.dropDatabase();
+
+7.Create the collection(table) in database:
+db.createCollection(“student”);
+
+8.show data inside a collection:
+db.student.find();
+
+9.insert data in collection:
+db.student.insertOne({ "id": 101, "name": "kaushik", "phone": 7999 })
+db.student.insertMany([
+  { "id": 102, "name": "Rahul", "phone": 7000 },
+  { "id": 103, "name": "Amit", "phone": 7888 }
+])
+
+10.Show collection data:
+db.student.find().pretty()
+db.student.find()
+
+11.Update Collection data:
+Update Multiple Documents:
+db.student.update({"phone":7999},{$set:{"phone":98989}})
+
+Update Single Documents:
+db.student.update({'id':101},{$set:{"name":"kundan","phone":870956}})
+
+12.Delete Collection data:
+db.student.deleteOne({ "name": "kaushik2" })
+
+Delete Multiple Documents:
+db.student.deleteMany({ "name": "kaushik2" })
+
+13.Display all student from collection:
+db.student.find();  same as select * from student;
+db.student.find.pretty();
+
+14.Display All the student with given city:
+db.student.find({“city”:”Blore”});
+db.student.find({“city”:”Blore”}).pretty();
+
+15. Display All the student with given phone number:
+db.student.find({“phone”:8888});
+db.student.findOne({“phone”:8888});
+
+16. Display All the student with given email Id:(Using And operator)
+db.student.find({“phone”:8888 ,“email”:”kaushikprasad1659@gmail.com”});
+
+17. Display All the student with given phone and  emailId:
+db.student.find({“email”:”kaushikprasad1659@gmail.com”});
+
+18. Display student with given P.K:
+db.student.findOne({"_id":ObjectId("67e4e941802e4e3f96b71236")})
+
+19.Relational Operators:
+1.Equal:
+db.student.find({“bal”:2000});
+2.Not equal:
+db.student.find({“bal”:{$ne:2000}});
+3.Greater then equal:
+db.student.find({“bal”:{$gte:2000}});
+4.Greater then:
+db.student.find({“bal”:{$gt:2000}});
+5.Less then equal:
+db.student.find({“bal”:{$lte:2000}});
+6.Less then:
+db.student.find({“bal”:{$lt:2000}});
+
+20.IN Operator and Not IN operator:
+db.student.find({“city”:”Blore”});
+db.student.find({“city”:”Blore”});
+db.student.find({ "course": { $in: ["Math", "Science"] } });
+db.student.find({ "course": { $nin: ["Math", "Science"] } });
+
+21.AND operator:
+db.student.find({ 
+    $and: [
+        { "course": "Math" },
+        { "bal": { $gt: 2000 } }
+    ] 
+});
+
+
+db.student.find({ 
+    $and: [
+        { "course": "Science" },
+        { "phone": "9876543210" }
+    ] 
+});
+
+22.OR operator:
+db.student.find({ 
+    $or: [
+        { "course": "Math" },
+        { "bal": { $gt: 2000 } }
+    ] 
+});
+
+
+db.student.find({ 
+    $or: [
+        { "course": "Science" },
+        { "phone": "9876543210" }
+    ] 
+});
+
+
+23.NOT operator:
+db.student.find({ "course": { $not: { $eq: "Math" } } });
+
+24.Projections:
+db.student.find();
+db.student.find({});
+db.student.find({},{});
+db.student.find({"phone":870956},{});
+db.student.find({"phone":870956},{_id:0});
+db.student.find({"name":"kundan"},{_id:0,phone:0});
+db.student.find({},{_id:0,phone:0});
+
+25. Limit Query:
+db.student.find().limit(5);
+
+26.Sorting:
+db.student.find().sort({“email”:1})  =>Ascending order
+db.student.find().sort({“email”:-1})  =>Descending order
+db.student.find({}, { name: 0, email: 0, _id: 0 }).sort({ feebal: 1 })
+
+27.Indexes :
+db.student.createIndex({“phone”:1})
+db.student.createIndex({“email”:-1})
+db.student.getIndexes()
+
+Data Types:
+Number
+String 
+Date
+Boolean 
+Double
+Object
+Array
+ObjectId
+Binary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

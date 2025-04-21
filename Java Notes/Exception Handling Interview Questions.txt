@@ -1,0 +1,119 @@
+Here is a list of common exception handling interview questions for Java, along with brief answers to help you prepare:
+
+Basic Questions
+What is an exception in Java?
+
+An exception is an event that disrupts the normal flow of the program's execution. It occurs during runtime and can be handled using Java's exception handling mechanism.
+What are the types of exceptions in Java?
+
+Checked Exceptions: Exceptions checked at compile-time (e.g., IOException, SQLException).
+Unchecked Exceptions: Exceptions not checked at compile-time (e.g., NullPointerException, ArithmeticException).
+Errors: Serious issues that the application should not try to handle (e.g., OutOfMemoryError, StackOverflowError).
+How is an exception handled in Java?
+
+Exceptions are handled using:
+try: The block of code where an exception might occur.
+catch: Handles the exception.
+finally: Executes cleanup code.
+throw: Used to explicitly throw an exception.
+throws: Declares exceptions in a method signature.
+What is the difference between throw and throws?
+
+throw: Used to explicitly throw an exception in the program.
+java
+Copy code
+throw new IllegalArgumentException("Invalid argument");
+throws: Declares the exceptions a method might throw.
+java
+Copy code
+public void readFile() throws IOException { }
+What is the base class for exceptions in Java?
+
+The base class for all exceptions is java.lang.Throwable.
+Exception and Error are its two subclasses.
+Intermediate Questions
+What is the difference between Exception and Error?
+
+Exception: Represents issues that can be handled in the program (e.g., IOException).
+Error: Represents serious problems that are usually beyond the control of the program (e.g., OutOfMemoryError).
+Can a try block exist without a catch block?
+
+Yes, but only if there is a finally block.
+java
+Copy code
+try {
+    // Code that might throw an exception
+} finally {
+    // Cleanup code
+}
+What is the purpose of the finally block?
+
+The finally block is used to execute cleanup code (e.g., closing resources) and is executed whether or not an exception occurs.
+What happens if an exception is thrown in the finally block?
+
+If an exception is thrown in the finally block, it overrides any exception thrown in the try or catch blocks.
+What is a custom exception?
+
+A user-defined exception that extends the Exception or RuntimeException class.
+java
+Copy code
+class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+Advanced Questions
+What happens if an exception is not caught in Java?
+
+If an exception is not caught, it propagates up the call stack. If it reaches the main() method and is still not caught, the JVM terminates the program and prints a stack trace.
+What is exception propagation?
+
+Exception propagation is the process of passing an exception from the current method to the caller method if it is not caught.
+What is the difference between checked and unchecked exceptions?
+
+Checked Exceptions: Must be declared in the method signature or handled (e.g., IOException).
+Unchecked Exceptions: Do not need to be declared or handled (e.g., NullPointerException).
+How can you create a custom exception in Java?
+
+By extending the Exception class for a checked exception or the RuntimeException class for an unchecked exception.
+What is the throws keyword used for?
+
+It is used in a method declaration to specify the exceptions a method can throw.
+Scenario-Based Questions
+What happens if you call System.exit() in a try block?
+
+The program terminates immediately, and neither the catch nor the finally block will be executed.
+Can we catch multiple exceptions in a single catch block?
+
+Yes, using the multi-catch feature introduced in Java 7.
+java
+Copy code
+try {
+    // Code
+} catch (IOException | SQLException e) {
+    e.printStackTrace();
+}
+What happens if a return statement is used in the try block?
+
+The finally block will still execute before the method returns.
+How do you rethrow an exception?
+
+You can rethrow the same or a different exception in the catch block.
+java
+Copy code
+try {
+    // Code
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+What is the difference between final, finally, and finalize()?
+
+final: A keyword to define constants, prevent method overriding, or inheritance of classes.
+finally: A block used in exception handling to execute cleanup code.
+finalize(): A method called by the Garbage Collector before destroying an object (deprecated since Java 9).
+Best Practices in Exception Handling
+Always handle exceptions gracefully.
+Avoid using generic catch (Exception e) unless necessary.
+Use specific exceptions for clarity.
+Clean up resources (e.g., streams, connections) in the finally block or use try-with-resources.
+Avoid using exceptions for control flow.

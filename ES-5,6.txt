@@ -1,0 +1,7 @@
+ES-5 Features:
+
+1.argument Object
+=>Allow to pass variable number of arguments to function.
+
+2.Can we pass argument object to another function: Yes
+Argument  array will be created for every function  with the parameters we are passing.

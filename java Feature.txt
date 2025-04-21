@@ -1,0 +1,21 @@
+Features of Java
+Simple: Easy to learn with syntax similar to C++. Unused features like explicit pointers and operator overloading are removed. Includes automatic garbage collection.
+Object-Oriented: Based on OOP concepts like classes, objects, inheritance, and encapsulation, making development and maintenance easier.
+Platform Independent: Write once, run anywhere. Java code is compiled into platform-independent bytecode.
+Robust: Strong memory management, automatic garbage collection, and exception handling enhance reliability.
+Portable: Bytecode can run on any platform.
+Multithreaded: Supports multiple threads sharing memory, ideal for web and multimedia applications.
+Distributed: Enables creating distributed applications using RMI and EJB.
+Secure: Bytecode is non-readable, enhancing security.
+
+Uses of Java
+Banking: Used for transaction management.
+Mobile App Development: Core language for Android applications.
+Desktop Applications: Create GUI apps using AWT, Swing, or JavaFX.
+Big Data: Hadoop's MapReduce framework is written in Java.
+Web Applications: Frameworks like Spring and Hibernate support robust web development.
+
+JDK, JRE, and JVM
+JDK (Java Development Kit): Provides tools for developing and executing Java programs. It includes both development tools and the JRE.
+JRE (Java Runtime Environment): Allows you to run Java programs. It includes libraries and other files used by the JVM at runtime.
+JVM (Java Virtual Machine): Executes Java programs. It is part of both JDK and JRE, responsible for running Java code line by line.

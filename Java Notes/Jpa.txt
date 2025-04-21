@@ -1,0 +1,76 @@
+What is ORM, JPA, and Hibernate?
+Let’s understand them together step by step.
+
+1. ORM (Object-Relational Mapping)
+Definition:
+ORM is a concept or technique that maps Java objects to database tables and vice versa, eliminating the need for writing SQL queries.
+
+Key Benefits:
+
+Work with objects in Java instead of database-specific SQL.
+Simplifies handling of relationships between tables (e.g., One-to-Many, Many-to-Many).
+Reduces boilerplate code for database operations.
+2. JPA (Java Persistence API)
+Definition:
+JPA is a specification provided by Java that defines how ORM should work in Java applications. It provides rules and guidelines but does not do the actual work of ORM itself.
+
+Key Features:
+
+Defines annotations like @Entity, @Table, @Id, etc., to map Java classes to database tables.
+Allows database operations like persist, find, and delete using a consistent API.
+Works with multiple ORM frameworks like Hibernate, EclipseLink, etc.
+3. Hibernate
+Definition:
+Hibernate is the most widely used implementation of the JPA specification. It provides all JPA features and adds many advanced features like caching, lazy loading, and custom query support (HQL).
+
+Key Features:
+
+Implements JPA annotations and APIs.
+Adds additional functionalities (e.g., second-level caching, better support for advanced queries).
+Handles database-specific dialects automatically.
+How They Work Together
+ORM is the concept.
+It defines how to map Java objects to database tables.
+
+JPA provides the rules for ORM.
+It tells you how to use annotations and APIs to implement ORM in your Java application.
+
+Hibernate is the tool that implements JPA.
+It does the heavy lifting by translating Java objects into SQL and interacting with the database.
+
+Example in Spring Boot
+A simple Student entity mapped to a database table:
+
+java
+Copy
+Edit
+@Entity // JPA annotation to mark this class as a database entity
+public class Student {
+
+    @Id // JPA annotation for primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates ID values
+    private Long id;
+
+    private String name;
+
+    private String email;
+
+    // Getters and Setters
+}
+Repository using Spring Data JPA:
+
+java
+Copy
+Edit
+public interface StudentRepository extends JpaRepository<Student, Long> {
+    List<Student> findByName(String name); // JPA will create the query automatically
+}
+When this repository method is called, the following happens:
+
+JPA: Provides the abstraction and query-building rules.
+Hibernate: Executes the SQL queries and maps the results back to Java objects.
+ORM: Handles the conversion between the Student object and the corresponding table in the database.
+In Simple Words:
+ORM: The concept of mapping Java objects to database tables.
+JPA: The set of rules and guidelines for doing ORM in Java.
+Hibernate: The tool that implements these rules and makes ORM work efficiently.

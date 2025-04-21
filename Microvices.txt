@@ -1,0 +1,52 @@
+#Monolithic architecture:
+Multpile components(class) are combined in sinle large app.
+
+✔️ Advantages:
+Easy to Build – All code is in one place, so it's easy to start and develop.
+
+Simple to Test – Testing is easier because everything is in one project.
+
+Single Deployment – You only need to deploy one application.
+
+Less Setup – You don’t need to manage multiple services or tools.
+
+
+❌ Disadvantages:
+Hard to Scale – You can’t scale one part; you have to scale the whole app.
+
+Tight Coupling – All components are linked, so one small issue can affect the whole app.
+
+Difficult to Update – Even a small change needs full deployment again.
+
+Big Codebase – As the app grows, the code becomes harder to manage and understand.
+
+
+#MicroServices:
+MicroServices basically it is divide our large application in small parts.
+
+✔️ Advantages:
+Independent Services – Each feature (like login, order, payment) is in its own service.
+
+Scalable – You can scale only the service that needs more power.
+
+Flexible Technology – You can use different languages or tools for different services.
+
+Easy to Maintain – Smaller codebases are easier to understand and fix.
+
+
+❌ Disadvantages:
+Complex to build: Harder to design and manage in the beginning.
+
+More communication: Services need to talk to each other through APIs.
+
+Deployment Management – You need to manage many deployments, not just one.
+
+Harder to Test Together – Testing multiple services working together can be tricky.
+
+
+Feature   	                 Monolithic App   	                                Microservices App
+Structure	                 One big app	Many                                small apps
+Deployment	                 One time for all	                                Separate for each service
+Scaling	                     Full app	                                        Only the needed part
+Complexity	                 Simple to start	                                Complex to manage
+Flexibility	                 Low (one tech stack)	                            High (different tech per service)

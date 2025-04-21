@@ -1,0 +1,456 @@
+1. What is Spring Boot?
+Spring Boot is part of the Spring Framework, and it is used to develop Java-based applications
+with minimal configuration and faster setup.
+It provides:
+
+Auto-configuration to set up Spring application features.
+An embedded server (like Tomcat or Jetty) for running applications without an external server.
+A production-ready environment with minimal configuration.
+
+2. What are the Features of Spring Boot?
+There are many useful features of Spring Boot. Some of them are mentioned below:
+
+Auto-configuration – Spring Boot automatically configures dependencies by using @EnableAutoconfiguration annotation and reduces boilerplate code.
+Spring Boot Starter POM – These Starter POMs are pre-configured dependencies for functions like database, security, maven configuration etc.
+Spring Boot CLI (Command Line Interface) – This command line tool is generally for managing dependencies, creating projects and running the applications.
+Actuator – Spring Boot Actuator provides health check, metrics and monitors the endpoints of the application. It also simplifies the troubleshooting management.
+Embedded Servers – Spring Boot contains embedded servers like Tomcat and Jetty for quick application run. No need of external servers.
+Features of Spring Boot
+
+
+3. What is the Spring Boot starter?
+
+A Spring Boot Starter is a pre-defined set of dependencies (a bundle) that helps you quickly
+add commonly used Spring features into your project — without writing long and complex pom.xml files.
+
+spring-boot-starter-web: For building web applications.
+spring-boot-starter-data-jpa: For working with JPA and Hibernate.
+
+4. What is Spring Boot Actuator?
+
+Spring Boot Actuator provides production-ready features like health checks, metrics, application insights, and monitoring.
+Examples of Actuator endpoints:
+
+/actuator/health – Provides the health status of the application.
+/actuator/metrics – Displays application metrics.
+
+4. Define the Key Components of Spring Boot.
+The key components of Spring Boot are listed below:
+
+Spring Boot starters
+Auto-configuration
+Spring Boot Actuator
+Spring Boot CLI
+Embedded Servers
+
+5. How does Spring Boot achieve auto-configuration?
+Answer:
+Spring Boot achieves auto-configuration using:
+
+@EnableAutoConfiguration Annotation: Automatically configures the application based on the classpath.
+Spring Factories: Uses spring.factories file in META-INF to load configuration classes.
+
+@SpringBootApplication // This includes @EnableAutoConfiguration
+public class MyApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApp.class, args);
+    }
+}
+
+6. What is an embedded server? Name a few supported by Spring Boot.
+Answer:
+An embedded server allows applications to run without requiring an external server. Spring Boot supports:
+
+Tomcat (Default)
+Jetty
+Undertow
+
+7. What is the difference between @RestController and @Controller?
+Answer:
+
+@Controller: Used to define a controller that returns views (like Html/JSP).used for Web App.
+@RestController: Combines @Controller and @ResponseBody to return JSON or XML responses directly.Used for REST API
+
+8. How do you configure a database in Spring Boot?
+
+Spring Boot uses application.properties or application.yml to configure the database.
+Example for MySQL:
+
+properties
+Copy code
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb  
+spring.datasource.username=root  
+spring.datasource.password=password  
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver  
+
+
+9. What is Spring Boot DevTools?
+Spring Boot DevTools is a module that provides features to improve development speed, such as:
+
+Automatic restart of the application on code changes.
+LiveReload for refreshing the browser.
+
+10. What is the purpose of application.properties or application.yml?
+These files are used for externalizing application configuration, such as:
+
+Server port (server.port=8080)
+Database connection (spring.datasource.*)
+Logging level (logging.level.*)
+
+11. How can you secure a Spring Boot application?
+Answer:
+You can secure a Spring Boot application using Spring Security by:
+
+Adding the Spring Security dependency.
+Configuring security in SecurityConfig using @EnableWebSecurity.
+Adding authentication and authorization rules.
+
+12. What is the use of @SpringBootApplication?
+@SpringBootApplication is a convenience annotation that combines:
+
+@Configuration: Marks the class as a configuration class.
+@EnableAutoConfiguration: Enables Spring Boot's auto-configuration.
+@ComponentScan: Scans for components and beans in the package.
+
+13. How do you monitor a Spring Boot application?
+Use Spring Boot Actuator endpoints like /actuator/health and /actuator/metrics.
+Integrate with tools like Prometheus, Grafana, or Micrometer for advanced monitoring.
+
+14. How to create a custom exception in Spring Boot?
+Create a custom exception class extending RuntimeException.
+Use @ControllerAdvice and @ExceptionHandler to handle the exception globally.
+Example:
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}
+
+15. How do you handle errors in Spring Boot?
+Answer:
+
+Use @ControllerAdvice to handle exceptions globally.
+Override the ErrorController to customize error responses.
+
+16. What is the difference between JPA and Hibernate?
+Answer:
+
+JPA (Java Persistence API): A specification for ORM (Object Relational Mapping).
+Hibernate: An implementation of JPA.
+These questions cover fundamental topics to help freshers confidently answer in interviews. Let me know if you need further explanation or additional questions!
+
+
+17. What is the difference between Spring Framework and Spring Boot?
+Answer:
+
+Aspect	Spring Framework	Spring Boot
+Configuration	Requires a lot of XML or Java-based config.	Minimal configuration due to auto-configuration.
+Deployment	Needs external server setup (e.g., Tomcat).	Comes with an embedded server.
+Setup Time	Longer setup time.	Quick setup with starters and defaults.
+Focus	Broad framework for enterprise applications.	Simplifies microservice development.
+18. How do you implement pagination in Spring Boot?
+Answer:
+Pagination is implemented using Spring Data JPA.
+
+Use Pageable and Page interfaces:
+java
+Copy code
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    Page<Employee> findByDepartment(String department, Pageable pageable);
+}
+Example controller:
+java
+Copy code
+@GetMapping("/employees")
+public Page<Employee> getEmployees(@RequestParam int page, @RequestParam int size) {
+    return employeeRepository.findAll(PageRequest.of(page, size));
+}
+
+19. What is the role of @EnableAutoConfiguration?
+Answer:
+@EnableAutoConfiguration allows Spring Boot to automatically configure beans and settings based on the classpath and environment.
+For example, if spring-boot-starter-data-jpa is present, it configures Hibernate and JPA automatically.
+
+20. How do you override default properties in Spring Boot?
+Answer:
+You can override properties in the application.properties or application.yml file.
+Alternatively, pass them as command-line arguments:
+
+java -jar app.jar --server.port=9090
+
+21. What is the spring-boot-starter-test?
+Answer:
+It is a starter dependency for testing in Spring Boot, including:
+
+JUnit 5: For unit testing.
+MockMvc: For testing controllers.
+AssertJ: For fluent assertions.
+Mockito: For mocking dependencies.
+
+22. How do you create a REST API in Spring Boot?
+Answer:
+Steps to create a REST API:
+
+Add spring-boot-starter-web dependency.
+Use @RestController and @RequestMapping.
+Create methods annotated with @GetMapping, @PostMapping, etc.
+Example:
+@RestController
+@RequestMapping("/api")
+public class EmployeeController {
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees() {
+        return employeeService.findAll();
+    }
+}
+
+23. What is the difference between @Component, @Service, @Repository, and @Controller?
+Answer:
+
+Annotation	Purpose	Special Role
+@Component:	General-purpose stereotype annotation.	Used for general beans.
+@Service:	Marks a service layer class.	Indicates business logic.
+@Repository:	Marks a DAO (Data Access Object).	Converts exceptions to Spring Data exceptions.
+@Controller:	Marks a controller.	Works with web requests and returns views.
+
+
+24. What is the role of the application.properties file?
+Answer:
+The application.properties file is used to configure the application. Examples:
+
+properties
+Copy code
+server.port=8080  
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb  
+logging.level.org.springframework=DEBUG 
+ 
+25. What are Profiles in Spring Boot?
+Answer:
+Profiles allow different configurations for different environments (e.g., dev, test, prod).
+
+Specify the active profile in application.properties:
+properties
+Copy code
+spring.profiles.active=dev
+Use profile-specific files like application-dev.properties or application-prod.properties.
+
+26. What is the use of @SpringBootTest?
+Answer:
+@SpringBootTest is used to test the complete application context, including beans, configuration, and environment.
+
+java
+Copy code
+@SpringBootTest
+public class MyAppTests {
+    @Test
+    public void contextLoads() {
+        // Test if the context loads successfully
+    }
+}
+
+27. What is the DispatcherServlet in Spring Boot?
+Answer:
+The DispatcherServlet is the front controller in Spring MVC.
+It is responsible for handling all incoming HTTP requests, routing them to the appropriate controller methods,
+and returning the response.
+
+28. What are the different types of dependency injection in Spring?
+Answer:
+
+Constructor Injection: Dependencies are injected through the constructor.
+
+@Component
+public class Car {
+    private Engine engine;
+
+    // Constructor Injection
+    @Autowired
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void drive() {
+        engine.start();
+        System.out.println("Car is driving!");
+    }
+}
+
+@Component
+public class Engine {
+    public void start() {
+        System.out.println("Engine started!");
+    }
+}
+
+Setter Injection: Dependencies are injected through setter methods.
+
+@Component
+public class Car {
+    private Engine engine;
+
+    // Setter Injection
+    @Autowired
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void drive() {
+        engine.start();
+        System.out.println("Car is driving!");
+    }
+}
+
+@Component
+public class Engine {
+    public void start() {
+        System.out.println("Engine started!");
+    }
+}
+
+Field Injection: Dependencies are injected directly into fields using @Autowired.
+
+@Component
+public class Car {
+    
+    @Autowired
+    private Engine engine;  // Field Injection
+
+    public void drive() {
+        engine.start();
+        System.out.println("Car is driving!");
+    }
+}
+
+@Component
+public class Engine {
+    public void start() {
+        System.out.println("Engine started!");
+    }
+}
+
+
+29. How do you connect to an external API using Spring Boot?
+Answer:
+Use RestTemplate or WebClient (recommended for reactive programming).
+Example using RestTemplate:
+
+java
+Copy code
+@RestController
+public class ApiController {
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping("/external")
+    public String getExternalData() {
+        return restTemplate.getForObject("https://api.example.com/data", String.class);
+    }
+}
+
+30. What is a Bean in Spring?
+Answer:
+A Bean is an object managed by the Spring IoC container. It is created, configured, and destroyed by the container.
+Beans are defined using:
+
+@Component
+@Bean in a configuration class.
+
+31. How do you handle cross-origin requests in Spring Boot?
+Answer:
+You can use @CrossOrigin annotation or configure CORS globally.
+
+java
+Copy code
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
+public class MyController {
+    @GetMapping("/data")
+    public String getData() {
+        return "Hello";
+    }
+}
+32. What is @Entity in Spring Boot?
+Answer:
+@Entity is a JPA annotation used to map a class to a database table.
+Example:
+
+java
+Copy code
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+}
+33. How do you handle validation in Spring Boot?
+Answer:
+Use annotations like @NotNull, @Size, and @Email from the javax.validation package.
+
+java
+Copy code
+public class User {
+    @NotNull
+    @Size(min = 2, max = 20)
+    private String name;
+
+    @Email
+    private String email;
+}
+In the controller:
+
+java
+Copy code
+@PostMapping("/users")
+public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
+    return ResponseEntity.ok("User created");
+}
+34. What are Spring Boot’s default logging levels?
+Answer:
+Spring Boot uses SLF4J and Logback by default. Logging levels:
+
+TRACE
+DEBUG
+INFO (default)
+WARN
+ERROR
+
+35. SpringBoot Flow:
+(i).User client:send requests
+(ii).Request is recieve  the controller(Presntation layer)  handling all http request.
+(iii).Controller is sending the request to Business logic(Service layer).
+(iv).service layer is sednding the request to dao layer Repository (Dao layer).
+(v).Dao layer communicate with database.
+
+✅ Spring Boot Application Flow (Layered Architecture)
+User/Client
+🔸 Sends an HTTP request using browser, Postman, frontend (React/Angular), etc.
+
+Controller (Presentation Layer)
+🔸 Receives the request.
+🔸 Handles all incoming HTTP requests (@GetMapping, @PostMapping, etc.).
+🔸 Passes data to the service layer for processing.
+
+Service Layer (Business Logic)
+🔸 Contains core application logic.
+🔸 Processes the data, applies rules, and coordinates operations.
+🔸 Calls the Repository (DAO) layer to interact with the database.
+
+Repository (DAO Layer)
+🔸 Uses Spring Data JPA or JDBC to perform database operations (CRUD).
+🔸 Communicates directly with the Database.
+
+Database
+🔸 Stores or retrieves data as per the query.
+🔸 Sends response back to DAO → Service → Controller → Client.
+
+
+
+
+ORM (Object-Relational Mapping): Helps convert Java objects to database tables, so you can work with data in Java objects instead of writing raw SQL queries.
+
+JPA (Java Persistence API): A set of rules that tells how Java objects should be stored and retrieved from a database. It’s a blueprint for ORM.
+
+Hibernate: A tool that follows the JPA rules to automatically handle database operations for Java objects, making it easier to interact with the database.

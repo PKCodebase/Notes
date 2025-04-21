@@ -1,0 +1,92 @@
+Parent state change the all childs componet are re renderd.
+
+How to avoid the unnecessary Rendered?
+1.Class Component:
+=> shouldComponentUpdate(){
+if(something){return true;}
+else{return false;}
+}
+
+
+2.UseCallback() hook:
+HelloComnponet=>HaiComponet(child);
+
+Q).What can be passed from Hello component to Hai Component?
+=>State and function can be passed from Hello to Hai component
+
+
+**: When a component   state is change that component	  wil be renderd.
+
+when component is re-rendering that component child also be re-renderd. 
+
+
+**: conetxt is centralized the business logic.
+
+
+Differe Between Component and customHook.
+1.Component:
+Name: Header,Footer,coureCompnonet
+return jsx
+
+2.Hook:
+Name: useHeader,useFooter, usecoureCompnonet
+run the Business logic and return data and function also .
+
+
+Custom React hook in nothing it is simple reusable function.
+
+Use For Change the title:
+Ex:
+useEffect(()=>{
+        document.title = `HaiComponent-${count}`;
+    },[count]); //count defines how many times it will call
+	
+	
+Avoid the unnecessary function call for (useMemo)if something will be change only it will be re-renderd.
+
+Parent and child component if anything is changed in parent component then child will be re-renderd the use (Callback).
+
+
+#React Redux :It is third party library
+
+what is the use of Redux connect Api.
+=>Redux connect Api is used to map the redux state with component props,A redux dispatch to component function.
+
+
+##In the case of class Component we not use a hook.
+In Class Component then we go for a connect Api.
+
+
+
+###(i).At the component loading dispatch request to the Redux.
+(ii).Then Redux will talk to the server and get the data from server and intialize it.
+
+
+#Logger & Thunk :
+Asyinchronous call for Rest Api we use MiddleWare like(Thunk) for enabling Asyinchronous communication with Readux.
+
+
+1>what is the use of Dispatch Function?
+=>To Dispatch the action.
+dispatch();
+coureDispatch(action);
+
+2>What is an Action?
+=>Action is an simple objects which contains action Type and payload.
+courseDispatch(fetchCourseSuccess());
+
+A).dispatch({
+ type:FETCH_COURSES_SUCCESS,
+ payload:courses
+});
+
+B).dispatch(fetAllCourses())
+fetAllCourses() function will not return any object.
+you are passing function  to the dispatch() instead of action object.
+But redux does not support to function as parameters to dispatch() function.
+Redux supports only Action object as parameters to dispatch function.
+Now to Allow function as Parameters  to dispatch() function you need to use middleware like redux-thunk.
+
+
+courseDispatch(fetchCourseSuccess());
+courseDispatch(fetchCourseSuccess());

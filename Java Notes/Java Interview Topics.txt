@@ -1,0 +1,25 @@
+From sources across the web
+JDK vs JRE vs JVM
+Object-oriented programming (oop)
+Abstract classes and interfaces
+What is Java?
+Generics
+JDBC
+JVM
+Access specifiers
+Collections framework
+Exception handling
+Garbage collection
+How is Java different from C?
+Java ClassLoader
+Java Fundamentals
+JDK
+Jvm and memory management
+Multithreaded
+OOPs concepts
+Override a static method
+String
+Algorithms
+Array
+Can we declare pointer in Java?
+Constructor chaining and calling

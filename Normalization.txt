@@ -1,0 +1,83 @@
+Normalization in DBMS (Simple Definition & Example)
+Normalization is the process of organizing data in a database to remove duplicate data and avoid errors.
+
+1. First Normal Form (1NF)
+
+✅ Rule: Each column should have only one value (no multiple values in a single cell).
+
+❌ Before 1NF (Problem: Multiple values in one cell)
+
+Student_ID	Name	Subjects
+1	Alice	Math, Science
+2	Bob	English, History
+
+
+✔ After 1NF (Fix: Separate rows for each subject)
+
+Student_ID	Name	Subject
+1	        Alice	Math
+1	        Alice	Science
+2	        Bob	English
+2	        Bob	History
+
+
+2. Second Normal Form (2NF)
+✅ Rule: No column should depend on only part of a composite key.
+
+❌ Before 2NF (Problem: Course Name depends only on Course ID, not Student ID)
+
+Student_ID	Course_ID	Student_Name	Course_Name
+1	C101	Alice	Math
+2	C102	Bob	Science
+
+
+✔ After 2NF (Fix: Separate Student and Course tables)
+
+Students Table
+
+Student_ID	Student_Name
+1	Alice
+2	Bob
+Courses Table
+
+Course_ID	Course_Name
+C101	Math
+C102	Science
+Enrollment Table
+
+Student_ID	Course_ID
+1	C101
+2	C102
+
+
+3. Third Normal Form (3NF)
+✅ Rule: No column should depend on another non-key column.
+
+❌ Before 3NF (Problem: Department Name depends on Department ID, not Employee ID)
+
+Employee_ID	Name	Department_ID	Department_Name
+101	John	D01	HR
+102	Sam	D02	IT
+
+
+✔ After 3NF (Fix: Create a separate Department table)
+
+Employees Table
+
+Employee_ID	Name	Department_ID
+101	John	D01
+102	Sam	D02
+Departments Table
+
+Department_ID	Department_Name
+D01	HR
+D02	IT
+Key Takeaways
+Normalization Level	What It Does
+1NF	No multiple values in one cell
+2NF	No partial dependency on part of the key
+3NF	No column should depend on a non-key column
+
+
+📌 Why Normalize?
+To remove duplicate data, prevent errors, and make databases efficient. 🚀

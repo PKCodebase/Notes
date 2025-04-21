@@ -1,0 +1,135 @@
+
+Here is a comprehensive list of commonly asked Object-Oriented Programming (OOPs) interview questions for freshers, along with their answers:
+
+Basic Questions
+What is OOP?
+
+Object-Oriented Programming (OOP) is a programming paradigm that uses "objects" to design and develop software. Objects are instances of classes that encapsulate data and behavior.
+What are the main principles of OOP?
+The four main principles of OOP are:
+
+Encapsulation: Wrapping data and methods into a single unit (class) and restricting access to certain components.
+Abstraction: Hiding unnecessary details and showing only the essential features.
+Inheritance: Acquiring the properties and behaviors of a parent class in a child class.
+Polymorphism: Performing a single action in different ways (e.g., method overloading and overriding).
+What is the difference between a class and an object?
+
+Class: A blueprint or template for creating objects.
+Object: An instance of a class. For example, Car is a class, and myCar is an object of the Car class.
+What is the difference between abstraction and encapsulation?
+
+Abstraction: Focuses on hiding the implementation details and showing only functionality.
+Encapsulation: Restricts access to internal object details to ensure controlled interaction.
+Intermediate Questions
+What is inheritance? What are its types?
+Inheritance allows a class to acquire the properties and behaviors of another class.
+
+Single Inheritance: One class inherits another class.
+Multilevel Inheritance: A class inherits a class, which in turn inherits another class.
+Hierarchical Inheritance: Multiple classes inherit a single class.
+Hybrid Inheritance: A combination of the above types (not directly supported in Java).
+What is method overloading and method overriding?
+
+Method Overloading: Two or more methods in the same class have the same name but different parameters. (Compile-time polymorphism)
+java
+Copy code
+class Math {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+Method Overriding: A subclass provides a specific implementation of a method already defined in its superclass. (Runtime polymorphism)
+java
+Copy code
+class Animal {
+    void sound() { System.out.println("Animal makes a sound"); }
+}
+class Dog extends Animal {
+    void sound() { System.out.println("Dog barks"); }
+}
+What is the difference between this and super keywords?
+
+this: Refers to the current object instance.
+super: Refers to the parent class's methods or constructors.
+What is a constructor? What are its types?
+A constructor is a special method used to initialize objects.
+
+Default Constructor: A no-argument constructor provided by the compiler.
+Parameterized Constructor: A constructor with arguments.
+Copy Constructor (Not natively supported in Java): Creates a new object by copying an existing object.
+What is an abstract class?
+
+An abstract class cannot be instantiated and is used to define common behavior for subclasses.
+It can have abstract methods (methods without implementation) and concrete methods (methods with implementation).
+java
+Copy code
+abstract class Animal {
+    abstract void sound();
+    void eat() { System.out.println("This animal eats food."); }
+}
+What is an interface? How is it different from an abstract class?
+
+An interface is a blueprint for a class. It contains only abstract methods (until Java 7). From Java 8 onwards, it can also have default and static methods.
+Key differences:
+Feature	Abstract Class	Interface
+Inheritance	extends	implements
+Methods	Abstract & Concrete	Abstract (default & static from Java 8)
+Fields	Can have variables	Only constants
+Advanced Questions
+What is multiple inheritance? Is it supported in Java?
+
+Multiple inheritance allows a class to inherit from more than one class.
+Java does not support multiple inheritance with classes to avoid ambiguity (diamond problem). However, it supports multiple inheritance through interfaces.
+What is the difference between composition and inheritance?
+
+Composition: "Has-a" relationship. One class contains an instance of another.
+Inheritance: "Is-a" relationship. One class inherits another.
+java
+Copy code
+// Composition example
+class Engine { }
+class Car {
+    Engine engine = new Engine(); // Car has-a Engine
+}
+What is dynamic method dispatch?
+
+Dynamic method dispatch (runtime polymorphism) occurs when a method call to an overridden method is resolved at runtime.
+What is encapsulation in OOP? How is it implemented?
+
+Encapsulation means bundling the data (fields) and methods (functions) that operate on the data into a single unit (class).
+It is implemented by:
+Declaring fields as private.
+Providing public getter and setter methods to access or update the fields.
+java
+Copy code
+class Student {
+    private String name;
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+}
+What are design patterns, and how are they related to OOP?
+
+Design patterns are reusable solutions to common software design problems.
+Examples: Singleton, Factory, Observer, Strategy, etc.
+Scenario-Based Questions
+How would you design a class for a real-world object like a car?
+
+Fields: make, model, color, engine
+Methods: startEngine(), stopEngine(), drive(), applyBrakes()
+Use composition for objects like Engine or Tire.
+Can a class be both abstract and final? Why or why not?
+
+No, because final classes cannot be extended, while abstract classes are meant to be extended.
+What happens if you override equals() but not hashCode()?
+
+It can lead to inconsistent behavior when the object is used in collections like HashMap or HashSet.
+Why are constructors not inherited?
+
+Constructors are not inherited because they are specific to the class they belong to and are used to initialize that class's instance.
+How do you prevent a class from being instantiated?
+
+By declaring the class as abstract or by making its constructor private.
+java
+Copy code
+class Utility {
+    private Utility() { } // Prevent instantiation
+}

@@ -1,0 +1,14 @@
+Finding the Second-Highest Value in MySQL.
+
+SELECT MAX(score) 
+FROM scores 
+WHERE score < (SELECT MAX(score) FROM scores);
+
+Find the Duplicates:
+
+SELECT email, COUNT(*) 
+FROM users 
+GROUP BY email 
+HAVING COUNT(*) > 1;
+
+

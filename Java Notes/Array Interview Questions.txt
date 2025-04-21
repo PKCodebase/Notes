@@ -1,0 +1,230 @@
+Basic Questions
+What is an array in Java?
+
+An array is a collection of elements of the same type stored in contiguous memory locations.
+java
+Copy code
+int[] numbers = {1, 2, 3, 4};
+How do you declare and initialize an array in Java?
+
+Declaration: int[] arr;
+Initialization: arr = new int[5];
+Combined: int[] arr = {1, 2, 3, 4, 5};
+What is the default value of array elements in Java?
+
+Numeric types (int, float): 0
+Boolean: false
+Object references: null
+What are the types of arrays in Java?
+
+Single-dimensional: int[] arr = {1, 2, 3};
+Multi-dimensional (e.g., 2D arrays):
+java
+Copy code
+int[][] matrix = {
+    {1, 2},
+    {3, 4}
+};
+What are the limitations of arrays in Java?
+
+Fixed size: The size of the array must be declared at the time of creation and cannot be changed.
+Stores elements of the same data type only.
+No built-in support for dynamic resizing or advanced operations (use collections like ArrayList for such cases).
+Intermediate Questions
+How do you find the length of an array in Java?
+
+Use the length property:
+java
+Copy code
+int[] arr = {1, 2, 3};
+System.out.println(arr.length); // 3
+How do you copy an array in Java?
+
+Using System.arraycopy():
+java
+Copy code
+int[] source = {1, 2, 3};
+int[] target = new int[source.length];
+System.arraycopy(source, 0, target, 0, source.length);
+Using Arrays.copyOf():
+java
+Copy code
+int[] copied = Arrays.copyOf(source, source.length);
+How do you sort an array in Java?
+
+Use Arrays.sort():
+java
+Copy code
+int[] arr = {3, 1, 2};
+Arrays.sort(arr); // arr becomes {1, 2, 3}
+How do you find the maximum or minimum value in an array?
+
+java
+Copy code
+int max = arr[0];
+for (int num : arr) {
+    if (num > max) max = num;
+}
+What is a jagged array in Java?
+
+A jagged array is a multidimensional array where each row can have different column sizes.
+java
+Copy code
+int[][] jagged = {
+    {1, 2},
+    {3, 4, 5},
+    {6}
+};
+Advanced Questions
+How do you reverse an array in Java?
+java
+Copy code
+public void reverseArray(int[] arr) {
+    int left = 0, right = arr.length - 1;
+    while (left < right) {
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+        left++;
+        right--;
+    }
+}
+How do you find duplicate elements in an array?
+java
+Copy code
+public void findDuplicates(int[] arr) {
+    Set<Integer> seen = new HashSet<>();
+    for (int num : arr) {
+        if (!seen.add(num)) {
+            System.out.println("Duplicate: " + num);
+        }
+    }
+}
+How do you find the missing number in an array of size n containing numbers from 1 to n?
+java
+Copy code
+public int findMissingNumber(int[] arr, int n) {
+    int sum = n * (n + 1) / 2; // Sum of first n numbers
+    for (int num : arr) {
+        sum -= num;
+    }
+    return sum;
+}
+How do you find the intersection of two arrays?
+java
+Copy code
+public int[] findIntersection(int[] arr1, int[] arr2) {
+    Set<Integer> set1 = new HashSet<>();
+    Set<Integer> intersection = new HashSet<>();
+    for (int num : arr1) set1.add(num);
+    for (int num : arr2) {
+        if (set1.contains(num)) intersection.add(num);
+    }
+    return intersection.stream().mapToInt(i -> i).toArray();
+}
+How do you remove duplicates from an array?
+java
+Copy code
+public int[] removeDuplicates(int[] arr) {
+    return Arrays.stream(arr).distinct().toArray();
+}
+Scenario-Based Questions
+How do you rotate an array by k positions?
+java
+Copy code
+public void rotateArray(int[] arr, int k) {
+    k %= arr.length;
+    reverse(arr, 0, arr.length - 1);
+    reverse(arr, 0, k - 1);
+    reverse(arr, k, arr.length - 1);
+}
+
+private void reverse(int[] arr, int start, int end) {
+    while (start < end) {
+        int temp = arr[start];
+        arr[start++] = arr[end];
+        arr[end--] = temp;
+    }
+}
+How do you merge two sorted arrays into a single sorted array?
+java
+Copy code
+public int[] mergeSortedArrays(int[] arr1, int[] arr2) {
+    int[] merged = new int[arr1.length + arr2.length];
+    int i = 0, j = 0, k = 0;
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) merged[k++] = arr1[i++];
+        else merged[k++] = arr2[j++];
+    }
+    while (i < arr1.length) merged[k++] = arr1[i++];
+    while (j < arr2.length) merged[k++] = arr2[j++];
+    return merged;
+}
+How do you check if an array contains a specific element?
+java
+Copy code
+public boolean contains(int[] arr, int target) {
+    for (int num : arr) {
+        if (num == target) return true;
+    }
+    return false;
+}
+How do you find the second largest element in an array?
+java
+Copy code
+public int findSecondLargest(int[] arr) {
+    int largest = Integer.MIN_VALUE, secondLargest = Integer.MIN_VALUE;
+    for (int num : arr) {
+        if (num > largest) {
+            secondLargest = largest;
+            largest = num;
+        } else if (num > secondLargest && num != largest) {
+            secondLargest = num;
+        }
+    }
+    return secondLargest;
+}
+How do you find the subarray with the maximum sum (Kadane’s Algorithm)?
+java
+Copy code
+public int maxSubArraySum(int[] arr) {
+    int maxSum = Integer.MIN_VALUE, currentSum = 0;
+    for (int num : arr) {
+        currentSum = Math.max(num, currentSum + num);
+        maxSum = Math.max(maxSum, currentSum);
+    }
+    return maxSum;
+}
+Miscellaneous Questions
+What is the difference between length and length()?
+length: Property of arrays to get their size.
+length(): Method of String to get the number of characters.
+How do you find the frequency of each element in an array?
+java
+Copy code
+public Map<Integer, Integer> frequencyCount(int[] arr) {
+    Map<Integer, Integer> freqMap = new HashMap<>();
+    for (int num : arr) {
+        freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+    }
+    return freqMap;
+}
+How do you check if two arrays are equal?
+java
+Copy code
+public boolean areArraysEqual(int[] arr1, int[] arr2) {
+    return Arrays.equals(arr1, arr2);
+}
+How do you shuffle elements in an array?
+java
+Copy code
+Collections.shuffle(Arrays.asList(arr));
+How do you convert an array to a list?
+java
+Copy code
+List<Integer> list = Arrays.asList(arr);
+Preparation Tips
+Understand basic operations like traversal, insertion, and deletion.
+Practice problems involving searching, sorting, and manipulating arrays.
+Learn key algorithms like Kadane’s for subarray sums and binary search.
+Focus on optimizing solutions to handle edge cases and large input sizes.

@@ -1,0 +1,117 @@
+Basic Questions
+What is the Java Collection Framework?
+
+The Java Collection Framework is a set of classes and interfaces that provides data structures (e.g., lists, sets, maps) and algorithms (e.g., searching, sorting).
+What are the main interfaces in the Java Collection Framework?
+
+Collection: Root interface for List, Set, and Queue.
+List: Ordered collection of elements (e.g., ArrayList, LinkedList).
+Set: Collection of unique elements (e.g., HashSet, TreeSet).
+Queue: Collection for holding elements prior to processing (e.g., PriorityQueue).
+Map: Key-value pairs (e.g., HashMap, TreeMap).
+What is the difference between Collection and Collections?
+
+Collection: An interface that is part of the Java Collection Framework.
+Collections: A utility class that contains static methods for operations on collections, like sorting and searching.
+What are the differences between ArrayList and LinkedList?
+
+Feature	ArrayList	LinkedList
+Data Structure	Dynamic array	Doubly linked list
+Access Speed	Faster for random access	Slower for random access
+Insertion/Deletion	Slower (requires shifting)	Faster (node manipulation)
+What is the difference between HashSet and TreeSet?
+
+HashSet: Unordered, backed by a HashMap.
+TreeSet: Sorted in natural order or by a comparator, backed by a TreeMap.
+Intermediate Questions
+What is the difference between HashMap and Hashtable?
+
+HashMap:
+Not synchronized.
+Allows one null key and multiple null values.
+Hashtable:
+Synchronized.
+Does not allow null keys or values.
+How does HashMap work internally?
+
+A HashMap uses an array of buckets where each bucket is a linked list (or a tree for high load factors).
+The key’s hash code determines the bucket index.
+If multiple keys map to the same bucket (collision), they are stored in a linked list or tree structure.
+What is the difference between Comparable and Comparator?
+
+Comparable: Used for natural ordering by implementing the compareTo() method in the object’s class.
+Comparator: Used for custom ordering by implementing the compare() method in a separate class.
+What is the difference between Iterator and ListIterator?
+
+Iterator:
+Supports forward traversal only.
+Can be used with all collections.
+ListIterator:
+Supports bidirectional traversal.
+Can be used only with List.
+What is a fail-fast iterator?
+
+An iterator that throws a ConcurrentModificationException if the collection is modified during iteration (e.g., ArrayList, HashMap iterators).
+What is the difference between Queue and Deque?
+
+Queue: A collection that supports FIFO (First-In-First-Out) operations.
+Deque: A double-ended queue that supports insertion and removal from both ends.
+What are the differences between TreeMap and HashMap?
+
+Feature	TreeMap	HashMap
+Ordering	Sorted by keys	Unordered
+Performance	Slower (O(log n))	Faster (O(1) for basic ops)
+Null Keys	Not allowed	Allows one null key
+Advanced Questions
+How does ConcurrentHashMap work?
+
+ConcurrentHashMap divides the map into segments to allow concurrent access.
+It does not lock the entire map; only specific segments are locked during updates.
+What is the difference between synchronized collections and concurrent collections?
+
+Synchronized Collections: Use locks to ensure thread safety (e.g., Collections.synchronizedList()).
+Concurrent Collections: Designed for high concurrency with minimal locking (e.g., ConcurrentHashMap, CopyOnWriteArrayList).
+What is the difference between LinkedHashMap and HashMap?
+
+LinkedHashMap: Maintains insertion order.
+HashMap: Does not maintain any order.
+What is the purpose of WeakHashMap?
+
+A WeakHashMap uses weak references for its keys, allowing the garbage collector to remove entries when the key is no longer referenced elsewhere.
+What is the difference between IdentityHashMap and HashMap?
+
+IdentityHashMap: Uses reference equality (==) to compare keys.
+HashMap: Uses the equals() method to compare keys.
+What is the NavigableMap interface?
+
+A sub-interface of SortedMap that provides navigation methods like lowerKey(), higherKey(), floorKey(), and ceilingKey().
+Scenario-Based Questions
+When would you use a LinkedList over an ArrayList?
+
+Use LinkedList when there are frequent insertions and deletions, especially in the middle of the list.
+How would you remove duplicates from a List?
+
+By converting the List to a Set (e.g., HashSet or LinkedHashSet) and then back to a List.
+How do you sort a List of objects?
+
+Use Collections.sort() with a custom Comparator or have the object implement Comparable.
+How would you handle a situation where multiple threads access a HashMap?
+
+Use ConcurrentHashMap or synchronize the HashMap using Collections.synchronizedMap().
+How do you iterate over a Map?
+
+Using forEach with Lambda (Java 8+):
+java
+Copy code
+map.forEach((key, value) -> System.out.println(key + ": " + value));
+Using an Entry Set:
+java
+Copy code
+for (Map.Entry<K, V> entry : map.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+Key Tips
+Understand the internal working of collections like HashMap, ArrayList, and LinkedList.
+Practice handling concurrency issues with collections (e.g., ConcurrentHashMap).
+Be prepared to write small programs to demonstrate your knowledge of sorting, searching, and data organization with collections.
+Explore the impact of different collection choices on performance and memory.

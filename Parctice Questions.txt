@@ -1,0 +1,49 @@
+Telusko: Youtube
+
+------------------------------------------
+Java basics
+
+Java 8 features
+
+Collections indepth
+
+Synchronization. why we need what is the purpose
+
+Threads
+
+MutliThreads what, why do we need it!!
+-----------------------------------------------------------
+select max(salary) as max_salary from students
+where max_salary>(select max(salary) from students);
+
+limit and offset purposes
+
+SELECT * from students
+Order by Salary DESC
+limit 1 offset 1
+
+-----------------------------------------------------------------
+
+Spring boot ORM(Hibernate and JPA)
+Joining Tables
+Spring boot basics (IOC container, Depenndency injection).
+More usage of Annotaion
+
+------------------------------------------------------------------
+
+Multithreading in Spring boot (Project)
+
+----------------------------------------------------------
+
+Difference between hasMap and HashTable.
+
+Which Data Structure use in Set.
+
+what is the pupose of encapsulation.
+
+why default and static method came in java 8.
+
+which data structure used hashtable.
+
+what is newinstance operator.
+

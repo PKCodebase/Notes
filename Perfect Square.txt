@@ -1,0 +1,7 @@
+Perfect Square: Always have old multiple 
+Ex: 25
+ 1*25
+ 25*1
+ 5*5
+ 
+ 

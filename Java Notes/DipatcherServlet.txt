@@ -1,0 +1,73 @@
+What is DispatcherServlet in Spring?
+The DispatcherServlet is the front controller in Spring's web MVC framework. It handles all incoming HTTP requests, processes them, and sends back appropriate responses.
+
+Think of it as the traffic controller of a Spring MVC application:
+
+It receives requests.
+Decides which controller should handle them.
+Passes the request to that controller.
+Returns the response to the client.
+How DispatcherServlet Works
+Client Sends a Request:
+A user sends an HTTP request to the web application.
+
+DispatcherServlet Receives the Request:
+All requests are directed to the DispatcherServlet (configured in the web.xml or automatically by Spring Boot).
+
+Request Mapping:
+The DispatcherServlet uses a HandlerMapping to determine which controller should handle the request.
+
+Controller Execution:
+The controller processes the request and interacts with the service and data layers as needed.
+
+View Resolution:
+Once the controller has processed the request, it returns a logical view name.
+The DispatcherServlet uses a ViewResolver to determine which view (e.g., HTML, JSON) to render.
+
+Response Sent Back:
+The final response is sent back to the client.
+
+Key Components Used by DispatcherServlet
+HandlerMapping:
+Maps incoming requests to the correct controller method.
+
+Controller:
+The component that contains business logic for processing requests.
+
+ModelAndView:
+Holds data (model) and the name of the view to be rendered.
+
+ViewResolver:
+Resolves the logical view name to an actual view (e.g., a .jsp or .html file).
+
+View:
+Responsible for rendering the final output.
+
+DispatcherServlet in Spring Boot
+In Spring Boot, the DispatcherServlet is automatically configured and registered. You don’t need to define it explicitly as in traditional Spring applications.
+
+For example:
+
+java
+Copy
+Edit
+@RestController
+@RequestMapping("/students")
+public class StudentController {
+
+    @GetMapping("/{id}")
+    public Student getStudent(@PathVariable Long id) {
+        return new Student(id, "John Doe", "john.doe@example.com");
+    }
+}
+Steps:
+
+The DispatcherServlet receives a request, e.g., GET /students/1.
+It uses HandlerMapping to route the request to StudentController.getStudent().
+The method executes and returns a Student object.
+The response (e.g., JSON) is sent back to the client.
+Why DispatcherServlet is Important
+Centralized Request Handling: All requests pass through it, ensuring consistent processing.
+Flexible Configuration: Can integrate with multiple technologies (e.g., JSON, JSP, Thymeleaf).
+Seamless Workflow: Ties together controllers, services, and views in a structured manner.
+In summary, DispatcherServlet is the backbone of Spring MVC that simplifies the entire web request handling process.

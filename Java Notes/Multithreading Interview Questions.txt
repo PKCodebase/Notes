@@ -1,0 +1,139 @@
+Basic Questions
+What is multithreading?
+
+Multithreading is a process of executing multiple threads at same time . Threads are lightweight sub-processes that share the same memory but execute independently.
+
+What is the difference between a process and a thread?
+
+Process: A program in execution; has its own memory space.
+Thread: A lightweight sub-process that shares the memory of the process it belongs to.
+
+What are the benefits of multithreading?
+
+Efficient resource use
+Threads share the same memory space, which allows for efficient resource use and communication. 
+Concurrent execution
+Multithreading allows for the concurrent execution of multiple programs, which improves overall system efficiency. 
+Faster execution time
+Splitting tasks into smaller, parallelizable components reduces the overall execution time. 
+
+
+How can you create a thread in Java?
+
+There are two ways:
+Extend Thread class:
+java
+Copy code
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+new MyThread().start();
+
+Implement Runnable interface:
+
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+new Thread(new MyRunnable()).start();
+
+What is the difference between start() and run() methods?
+
+start(): Creates a new thread and executes the run() method in a new thread.
+Can’t be invoked more than one time otherwise throws java.lang.IllegalStateException
+Defined in java.lang.Thread class.
+
+
+run(): Executes the run() method in the current thread without creating a new thread.
+Multiple invocation is possible
+Defined in java.lang.Runnable interface and must be overridden in the implementing class.
+
+Intermediate Questions
+What is the lifecycle of a thread?
+
+New: Thread is created but not started.
+Runnable: Thread is ready to run but waiting for CPU time.
+Running: Thread is executing.
+Blocked/Waiting: Thread is waiting for a resource or another thread to finish.
+Terminated: Thread has completed execution.
+
+What is thread synchronization, and why is it needed?.....
+
+Synchronization ensures that only one thread can access a critical section at a time, preventing race conditions.
+Achieved using synchronized blocks or methods.
+
+What is a deadlock in multithreading?......
+
+Deadlock occurs when two or more threads are waiting for each other to release resources, and none can proceed.
+
+What is the difference between synchronized methods and synchronized blocks?
+
+Synchronized method: Locks the entire method.
+Synchronized block: Locks only the specific code block, offering more granular control.
+
+What are thread priorities?
+
+Each thread has a priority (default is Thread.NORM_PRIORITY = 5).
+Priorities range from Thread.MIN_PRIORITY (1) to Thread.MAX_PRIORITY (10).
+Higher-priority threads get more CPU time, but thread scheduling is not guaranteed.
+
+
+Advanced Questions
+
+What is the difference between wait(), notify(), and notifyAll()?
+
+wait(): Makes a thread wait until it is notified.
+notify(): Wakes up a single waiting thread.
+notifyAll(): Wakes up all waiting threads.
+
+What is the difference between volatile and synchronized?
+
+volatile: Ensures visibility of changes to variables across threads but does not provide atomicity.
+synchronized: Ensures both atomicity and visibility but is more expensive due to locking.
+
+What is a thread-safe class?
+
+A class is thread-safe if it can be safely accessed and modified by multiple threads simultaneously without introducing inconsistent behavior.
+Examples: StringBuffer, Vector, ConcurrentHashMap.
+
+What is the difference between Runnable and Callable?
+
+Runnable: Does not return a result and cannot throw checked exceptions.
+Callable: Returns a result and can throw checked exceptions.
+
+What is a Thread Pool?
+
+A thread pool is a collection of pre-created threads that can be reused to execute tasks, reducing the overhead of thread creation.
+Managed using the ExecutorService framework in Java.
+
+Practical Questions
+How do you avoid deadlocks in Java?
+
+Use proper resource ordering.
+Use a timeout for thread locks.
+Avoid nested locks.
+What are the differences between ReentrantLock and synchronized?
+
+ReentrantLock offers more flexibility (e.g., try-locking, fair locks) compared to synchronized.
+synchronized is simpler to use and automatically releases the lock.
+How does the join() method work?
+
+The join() method makes the current thread wait until the thread on which it is called has finished executing.
+java
+Copy code
+Thread t = new Thread(() -> System.out.println("Thread running"));
+t.start();
+t.join(); // Wait for thread t to complete
+What is the ForkJoinPool?
+
+It is a framework introduced in Java 7 for parallel execution of tasks by dividing them into smaller subtasks.
+How can you handle uncaught exceptions in threads?
+
+By using Thread.setDefaultUncaughtExceptionHandler or Thread.setUncaughtExceptionHandler.
+Tips for Freshers:
+Focus on writing basic multithreaded programs.
+Understand concepts like thread lifecycle, synchronization, and common problems like deadlocks.
+Be prepared to explain and debug simple multithreading examples.

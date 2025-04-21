@@ -1,0 +1,31 @@
+🔹 Shallow Cloning (Copy):
+
+This is Java's default cloning method using clone() from Object class.
+
+It copies the main object only, not the objects inside it (if any).
+
+If the object has other objects (like inside variables), they are not copied, just referenced.
+
+So if you change the inner object in the copy, it will also change in the original.
+
+🧪 Summary:
+✅ Main object is cloned.
+
+❌ Inner objects are not cloned (shared).
+
+✏️ Changes in inner objects affect both original and copy.
+
+🔹 Deep Cloning (Copy):
+
+Java doesn’t do this automatically — you have to write code to do it.
+
+It copies both the main object and all objects inside it (nested ones too).
+
+So the copied object is totally independent from the original.
+
+🧪 Summary:
+✅ Main object is cloned.
+
+✅ Inner objects are also cloned.
+
+✏️ Changes in either the original or copy don’t affect each other.

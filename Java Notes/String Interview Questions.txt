@@ -1,0 +1,169 @@
+Basic Questions
+What is a String in Java?
+
+A String in Java is a sequence of characters, represented as an object of the java.lang.String class. Strings are immutable, meaning their value cannot be changed once created.
+Why are Strings immutable in Java?
+
+To enhance security, caching, and performance. Immutability ensures thread safety, efficient memory use (via the string pool), and prevents inadvertent modifications.
+What is the difference between String, StringBuilder, and StringBuffer?
+
+String: Immutable and thread-safe.
+StringBuilder: Mutable and not thread-safe but faster.
+StringBuffer: Mutable and thread-safe, but slower than StringBuilder.
+java
+Copy code
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World"); // modifies the original object
+What is the String Pool in Java?
+
+The String Pool (or String Intern Pool) is a special memory area in the JVM where String literals are stored.
+If a new literal is created, it checks the pool first to avoid duplicates, enhancing memory efficiency.
+How can you create a String object in Java?
+
+Using literals:
+java
+Copy code
+String s1 = "Hello";
+Using the new keyword:
+java
+Copy code
+String s2 = new String("Hello");
+Intermediate Questions
+What is the difference between == and equals() in Strings?
+
+==: Compares references (memory location).
+equals(): Compares content (character sequence).
+java
+Copy code
+String s1 = "Hello";
+String s2 = "Hello";
+System.out.println(s1 == s2); // true (same reference)
+System.out.println(s1.equals(s2)); // true (same content)
+What is the difference between String.intern() and regular Strings?
+
+intern() ensures that the string is added to the string pool if it's not already present and returns a reference to it.
+java
+Copy code
+String s1 = new String("Hello");
+String s2 = s1.intern(); // s2 refers to the string in the pool
+How can you convert a String to a character array?
+
+java
+Copy code
+String s = "Hello";
+char[] charArray = s.toCharArray();
+How can you reverse a String in Java?
+
+java
+Copy code
+String original = "Hello";
+String reversed = new StringBuilder(original).reverse().toString();
+How can you check if a String is a palindrome?
+
+java
+Copy code
+public boolean isPalindrome(String str) {
+    String reversed = new StringBuilder(str).reverse().toString();
+    return str.equals(reversed);
+}
+Advanced Questions
+What is the substring() method? Is it memory-efficient?
+The substring() method extracts a part of the string. Before Java 7, it shared the original string's memory, leading to potential memory leaks. From Java 7 onwards, it creates a new string object.
+java
+Copy code
+String s = "Hello World";
+String sub = s.substring(0, 5); // "Hello"
+What is the difference between String.valueOf() and toString()?
+String.valueOf(): Converts any object to a string, handling null safely (returns "null" for null).
+toString(): Invokes the object's toString() method; throws NullPointerException if the object is null.
+What is the difference between concat() and + operator in Strings?
+Both perform string concatenation, but + internally uses a StringBuilder for efficiency in loops.
+java
+Copy code
+String s1 = "Hello";
+String s2 = s1.concat(" World");
+How does the hashCode() method work for Strings?
+hashCode() computes the hash based on the content of the string. It ensures two strings with the same content produce the same hash code.
+Can you override the hashCode() method of a String?
+No, because String is a final class, and its methods cannot be overridden.
+What is the time complexity of common String operations?
+Length: O(1)
+Substring: O(n)
+Concatenation (+): O(n)
+Scenario-Based Questions
+How would you count the occurrence of each character in a String?
+java
+Copy code
+public Map<Character, Integer> countChars(String str) {
+    Map<Character, Integer> charCount = new HashMap<>();
+    for (char c : str.toCharArray()) {
+        charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+    }
+    return charCount;
+}
+How can you split a String by a delimiter?
+java
+Copy code
+String s = "apple,orange,banana";
+String[] fruits = s.split(",");
+How would you check if two Strings are anagrams?
+java
+Copy code
+public boolean isAnagram(String s1, String s2) {
+    char[] arr1 = s1.toCharArray();
+    char[] arr2 = s2.toCharArray();
+    Arrays.sort(arr1);
+    Arrays.sort(arr2);
+    return Arrays.equals(arr1, arr2);
+}
+How would you remove duplicate characters from a String?
+java
+Copy code
+public String removeDuplicates(String str) {
+    Set<Character> seen = new LinkedHashSet<>();
+    for (char c : str.toCharArray()) {
+        seen.add(c);
+    }
+    StringBuilder result = new StringBuilder();
+    for (char c : seen) {
+        result.append(c);
+    }
+    return result.toString();
+}
+How can you compare two Strings, ignoring case?
+Using equalsIgnoreCase():
+java
+Copy code
+String s1 = "Hello";
+String s2 = "hello";
+System.out.println(s1.equalsIgnoreCase(s2)); // true
+Miscellaneous Questions
+What happens if you try to modify a String?
+A new String object is created because Strings are immutable.
+How can you optimize string concatenation in loops?
+Use StringBuilder or StringBuffer instead of + operator.
+How would you check if a String contains only digits?
+java
+Copy code
+public boolean isNumeric(String str) {
+    return str.matches("\\d+");
+}
+What is the difference between StringBuffer and StringBuilder?
+StringBuffer: Thread-safe (synchronized).
+StringBuilder: Not thread-safe, but faster in single-threaded environments.
+How do you check if a String starts with or ends with a specific substring?
+java
+Copy code
+String s = "Hello World";
+System.out.println(s.startsWith("Hello")); // true
+System.out.println(s.endsWith("World"));  // true
+What is the significance of the trim() method?
+It removes leading and trailing whitespace from a string.
+What is the difference between charAt() and indexOf()?
+charAt(int index): Returns the character at the specified index.
+indexOf(String s): Returns the index of the first occurrence of the substring.
+Tips for Interview Preparation
+Practice basic operations like concatenation, splitting, and reversing strings.
+Understand immutability and how it affects performance and memory.
+Be ready to implement small programs or utility methods for real-world string manipulations.
+Focus on the differences and use cases of String, StringBuilder, and StringBuffer.
