@@ -1,6 +1,5 @@
 1. What is Spring Boot?
-Spring Boot is part of the Spring Framework, and it is used to develop Java-based applications
-with minimal configuration and faster setup.
+Spring Boot is part of the Spring Framework,it is easy way  and very fatser  to develop sprig application  using springboot.
 It provides:
 
 Auto-configuration to set up Spring application features.
@@ -210,7 +209,12 @@ public class EmployeeController {
 Answer:
 
 Annotation	Purpose	Special Role
-@Component:	General-purpose stereotype annotation.	Used for general beans.
+@Component:
+It is a general-purpose stereotype annotation in Spring.
+If you annotate any class with @Component, then the Spring IoC container automatically detects it and creates an 
+object (bean) of that class, and manages it.
+
+
 @Service:	Marks a service layer class.	Indicates business logic.
 @Repository:	Marks a DAO (Data Access Object).	Converts exceptions to Spring Data exceptions.
 @Controller:	Marks a controller.	Works with web requests and returns views.
@@ -454,3 +458,49 @@ ORM (Object-Relational Mapping): Helps convert Java objects to database tables, 
 JPA (Java Persistence API): A set of rules that tells how Java objects should be stored and retrieved from a database. It’s a blueprint for ORM.
 
 Hibernate: A tool that follows the JPA rules to automatically handle database operations for Java objects, making it easier to interact with the database.
+
+
+@Builder:@Builder comes from Lombok (not Spring Boot directly).
+When you add @Builder on a class, it automatically creates a Builder Pattern for that class without you writing 
+extra code manually.
+
+
+✅ Purpose:
+
+Helps you create objects easily — especially when a class has many fields.
+
+Makes your code cleaner and more readable.
+
+Solves the problem of having too many constructors or long constructor arguments.
+
+🔥 Simple Example:
+
+Without @Builder:
+
+Employee emp = new Employee(101, "Kaushik", "kaushik@example.com", 50000);
+
+👉 You must remember the order and pass all arguments.
+
+With @Builder:
+
+
+Employee emp = Employee.builder()
+    .id(101)
+    .name("Kaushik")
+    .email("kaushik@example.com")
+    .salary(50000)
+    .build();
+👉 Now you can choose fields in any order, and it's readable!
+
+IOC Container :(Inversion of Control)
+It is used to create and manage the objects.
+
+Why do we use IoC Container?
+✅ To automatically create objects
+✅ To inject dependencies between objects
+✅ To manage object lifecycle (when to create, destroy, etc.)
+✅ To make code flexible, clean, and testable.
+
+
+DI: (Dependeny Injection)
+Accessing one class properties to another class is called Dependency Injection.

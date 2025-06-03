@@ -1,0 +1,99 @@
+🔒 What is Session Management?
+
+✅ English:
+Session management means keeping track of a user's activity while they are using your web application — like whether they are logged in or not, who they are, etc.
+
+✅ Hindi:
+Session management का मतलब है कि आपकी वेबसाइट यह याद रखती है कि कौन-सा यूज़र लॉग इन है, वह क्या कर रहा है, और कितनी देर से एक्टिव है। 	
+
+
+Stateful (HttpSession):
+
+The server remembers the user.
+
+The session ID is stored on the server.
+
+After logging in, the server keeps track of the user via a session ID.
+
+Example: Traditional web applications, like banking websites.
+
+Ex:
+
+You log in to a website.
+
+The server creates a session and sends a session ID in the response (stored in cookies).
+
+On every request, the browser sends the session ID, and the server remembers you (no need to log in again).
+
+Stateless (JWT):
+
+The server does not remember the user.
+
+The user sends a token (JWT) with every request, and the server validates the token.
+
+Example: Modern REST APIs, where each request is independent and doesn’t rely on server-side session storage.
+
+@PostMapping("/login")
+public String login(HttpSession session, String username, String password) {
+    if (username.equals("user") && password.equals("password")) {
+        session.setAttribute("username", username);
+        return "Logged in successfully";
+    }
+    return "Invalid credentials";
+}
+
+
+Ex: 
+
+You log in to a website.
+
+The server generates a JWT token (which contains your user information, like username and expiration time).
+
+The server sends this token back to you, and from then on, you send the token in every request to authenticate.
+
+@PostMapping("/login")
+public String login(@RequestBody User user) {
+    if (user.getUsername().equals("user") && user.getPassword().equals("password")) {
+        String token = jwtUtil.generateToken(user.getUsername());
+        return token; // Send JWT token back to the user
+    }
+    return "Invalid credentials";
+}
+
+
+✅ CSRF = Cross-Site Request Forgery
+🔸 English Explanation:
+CSRF is a security attack where a malicious website tricks a logged-in user into unknowingly sending requests to another website (where the user is already authenticated).
+
+🧠 Example:
+You are logged in to your bank website in one tab.
+
+In another tab, you visit a malicious site.
+
+That malicious site sends a request like:
+POST /transfer?amount=1000&to=attacker
+Your browser automatically includes your session cookies, so the bank thinks the request is valid!
+
+➡️ The bank processes the request because it thinks it came from you.
+
+🔸 Hindi Explanation:
+CSRF एक सुरक्षा हमला है जिसमें एक धोखेबाज वेबसाइट, आपके नाम से एक वैध वेबसाइट पर जबरन request भेजती है, जबकि आप पहले से login होते हो।
+
+🧠 उदाहरण:
+आपने अपनी bank की वेबसाइट पर login किया हुआ है।
+
+आप किसी दूसरी फेक वेबसाइट पर जाते हो।
+
+वो वेबसाइट आपके ब्राउज़र से bank को एक ट्रांसफर request भेजती है, और आपके ब्राउज़र के cookies के कारण बैंक को लगता है कि ये request आपने भेजी है।
+
+➡️ पैसा किसी गलत अकाउंट में चला जाता है — बिना आपकी मर्जी के।
+
+
+We disable CSRF in REST APIs because they don’t use sessions or cookies for authentication — they use tokens 
+like JWT, which are not vulnerable to CSRF.
+
+Authentication : veryfying the user identity.
+
+Authorization : It gives the permissiom to access specific resource.
+
+Filter : 

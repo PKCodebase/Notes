@@ -5,3 +5,215 @@ ES-5 Features:
 
 2.Can we pass argument object to another function: Yes
 Argument  array will be created for every function  with the parameters we are passing.
+
+1.Arguments Object:
+
+Ex:for(let x of arguments){
+console.log(x);
+}
+
+show()
+show(10)
+show(10,20)
+
+2..Rest Operator:  (...myargs)
+ 
+You can pass any number of argumetns same as java varargs.
+show(10)
+show(10,20);
+
+function(...myargs){
+}
+
+3..Json Conversion:
+
+Json.parse() - String to Json Object
+Json.stringfy - Json Object to String
+
+
+4.How to access array?
+(i). regular for(old)
+(ii). for in (old)
+(iii). Array.forEach()-ES5
+(iv). for...of-ES6
+(v). Array.map()-ES5
+
+5. Functions:
+
+  function showArray2(myvalue) { 
+            console.log(myvalue); 
+        }  
+		
+		 arr.forEach(showArray2); : If we use multiple places then go for this.
+		 
+		     arr.forEach((myvalue)=> { 
+                console.log(myvalue);   : Only one time use the go for Arrow function.
+            }); 
+			
+			
+6.Arrow Function:
+A new sytax to define function,no need to define function function_name. 
+Function is just another object.
+Syntax:
+   show=()=>{
+     console.log("hello");
+	}
+	
+	const findSum=(x,y)=>{       (findSum is a referce variable which contains the function object Address)
+	   return x+y;
+	}
+	
+	
+let show(): if you want to change the variable value.
+const show(): if you don't want to change the variable value.
+
+7.let And Const:
+var:it is allow to declare  the variable with same name multiple tyme.
+let:it is allow to declare the variable but it is not allow to declare the variable with same name,but you assign
+new value.
+
+var scope: Global,Fuction but local scope is not possible it can be accessed outside also that's a problem.
+let scope: it is allow all scope.
+
+const:you cann't assign the value.
+
+
+8.Array Functions:(ES 5)
+forEach:Iterating each element one by one.
+map:It is used to transform each element one by one.
+filter: filter is used give the output based on condition.
+
+reduce():Starts from first to last.
+reduceRight():Start from last to first.
+
+indexOf():Searching from left to right.
+lastIndexOf():Searching from right to left.
+
+***(ES 6)
+find():return element
+findIndex():return index of elements.
+
+
+9.String:
+trim:
+
+startsWith()
+endsWith()
+includes()
+
+10.Spread Operator:(Rest Operator)it is always used in last
+
+It is used to unpacking the array:
+let arr = [1, 2, 3]; 
+        let arr1 = [arr, 4, 5];   
+        console.log(arr1);  //[[1,2,3],4,5]
+ 
+        let arr2 = [...arr, 4, 5]; //[1,2,3,4,5] 
+        console.log(arr2); 
+		
+		 let arr3 = [4, ...arr, 5]; //4,1,2,3,5 
+        console.log(arr3); 
+ 
+        let arr4 = [4, 5, ...arr]; //4,5,1,2,3 
+        console.log(arr4); 
+ 
+
+11.Destructring:
+(Rest Operator)it is always used in last.
+
+    let info = {id:"101" ,
+      name:"John",
+       phone:"870924"
+    }
+
+    const {id, name, phone} = info;
+    console.log(id);    
+    console.log(name);
+    console.log(phone);
+	
+12.Variables:
+No need to declare variable with let and const.
+
+
+13.Destructring:
+
+14:class and Objects:
+Members:
+properties(Instancce or static)
+Constructors
+Methods(Instance or static)
+setters and getters
+
+***
+i).we have to access instance variable with (this) keyword.
+=>this.cid;
+ii).  cid checks for local variable.
+
+
+***:These type of function are not allowed in class.
+i).function show(){....}
+ii).let ahowCustomer=()=>{....}
+iii).const showCustomer = ()=>{...}
+
+Only one constructor is allowed in a class.
+
+**MultipleInheritence is not supproted
+
+
+15.Map & Set same as java
+
+16.Module:Collection of js class.(Package)
+Two Ways:
+i)Named Exports:
+=> hello.js
+ export class Hello{...}
+ 
+ii)Default Exports:
+=>hello.js
+class Hello{..}
+export default Hello;
+
+
+
+we can also use alias as importing.
+import {Hello as MyHello) from '.myfile/hello.js';
+
+1. Default Import
+👉 You import the default thing from a module.
+
+Example:
+
+// file: myMath.js
+export default function add(a, b) {
+    return a + b;
+}
+Now in another file:
+
+// file: app.js
+import addFunction from './myMath.js';
+
+console.log(addFunction(2, 3));  // Output: 5
+
+2. Named Import
+👉 You import specific things by their exact name.
+
+Example:
+
+// file: myUtils.js
+export function multiply(a, b) {
+    return a * b;
+}
+
+export function divide(a, b) {
+    return a / b;
+}
+Now in another file:
+
+// file: app.js
+import { multiply, divide } from './myUtils.js';
+
+console.log(multiply(4, 5)); // Output: 20
+console.log(divide(10, 2));  // Output: 5
+17.Promises:
+
+

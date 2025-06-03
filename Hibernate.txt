@@ -1,0 +1,190 @@
+✅ 1. What is Hibernate?
+Answer:
+Hibernate is a Java framework used to map Java objects to database tables (ORM – Object Relational Mapping). It handles database operations like insert, update, delete, and fetch.
+
+✅ 2. What is ORM (Object Relational Mapping)?
+Answer:
+ORM is a technique that converts data between Java objects and database tables automatically. It helps developers work with objects instead of SQL directly.
+
+✅ 3. What are the advantages of Hibernate over JDBC?
+
+Feature	JDBC	Hibernate
+SQL Code	Manually written	Auto-generated (HQL)
+Connection Handling	Manual	Automatic
+Caching	Not available	Available
+Database Support	Fixed SQL	DB-independent
+✅ 4. What is a Session in Hibernate?
+Answer:
+A Session is an interface in Hibernate that represents a single unit of work with the database. It’s used to perform CRUD operations like save, update, delete.
+
+✅ 5. What is the difference between Session and SessionFactory?
+Answer:
+
+SessionFactory is a factory for creating Session objects.
+
+Session is used to interact with the database.
+
+java
+Copy
+Edit
+SessionFactory factory = ...;  
+Session session = factory.openSession();
+✅ 6. What is hibernate.cfg.xml?
+Answer:
+It’s the main Hibernate configuration file where you define database connection settings and mapping class references.
+
+xml
+Copy
+Edit
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db</property>
+    <property name="hibernate.connection.username">root</property>
+    ...
+  </session-factory>
+</hibernate-configuration>
+✅ 7. What is HQL?
+Answer:
+HQL (Hibernate Query Language) is like SQL but works with Java classes and properties instead of table and column names.
+
+Example:
+
+java
+Copy
+Edit
+Query q = session.createQuery("from Student where name = 'Kaushik'");
+✅ 8. What is the difference between save() and persist()?
+Answer:
+
+save() returns the generated ID, works outside transactions.
+
+persist() is transaction-bound, does not return ID.
+
+✅ 9. What is Lazy Loading?
+Answer:
+Lazy Loading means Hibernate loads related data only when needed, not when the parent object is fetched.
+
+✅ 10. What are the object states in Hibernate?
+
+State	Description
+Transient	Object is created but not stored in DB
+Persistent	Managed by Hibernate, stored in DB
+Detached	Was persistent, now not linked to session
+Would you like me to continue with more fresher-level questions and answers (like 11–20)? Or need a PDF or notes format?
+
+
+
+
+
+
+
+You said:
+give more questions with answer
+
+
+ChatGPT said:
+Sure Kaushik! Here are more beginner-level Hibernate interview questions with simple answers — great for freshers.
+
+✅ Hibernate Interview Questions for Freshers (Part 2)
+✅ 11. What is the purpose of hibernate.dialect property?
+Answer:
+The hibernate.dialect property tells Hibernate which SQL dialect to use based on the database.
+
+Example:
+
+xml
+Copy
+Edit
+<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+✅ 12. What is the difference between get() and load()?
+
+Method	Description
+get()	Returns null if object not found.
+load()	Throws ObjectNotFoundException if object not found.
+Example:
+
+java
+Copy
+Edit
+session.get(Student.class, 1);  // Safe
+session.load(Student.class, 1); // Lazy and throws error if not found
+✅ 13. What is a primary key in Hibernate?
+Answer:
+It’s the unique identifier for a table row.
+In Hibernate, we use @Id annotation to mark the primary key field.
+
+java
+Copy
+Edit
+@Entity
+public class Student {
+    @Id
+    private int id;
+}
+✅ 14. What is @Entity in Hibernate?
+Answer:
+@Entity is an annotation used to mark a class as a Hibernate entity (a mapped database table).
+
+java
+Copy
+Edit
+@Entity
+public class Student {
+   @Id
+   private int id;
+   private String name;
+}
+✅ 15. How do you map a Java class to a database table in Hibernate?
+Answer:
+You use annotations like @Entity, @Table, @Column.
+
+java
+Copy
+Edit
+@Entity
+@Table(name="students")
+public class Student {
+   @Id
+   @Column(name="id")
+   private int id;
+}
+✅ 16. What is the use of @Table annotation?
+Answer:
+@Table specifies the name of the database table to map the class to.
+
+✅ 17. What are the common annotations used in Hibernate?
+@Entity
+
+@Table
+
+@Id
+
+@GeneratedValue
+
+@Column
+
+@OneToMany, @ManyToOne
+
+✅ 18. What is the difference between @Column and @Transient?
+
+Annotation	Use
+@Column	Maps a field to a DB column
+@Transient	Field not saved in DB
+✅ 19. What is cascading in Hibernate?
+Answer:
+Cascade tells Hibernate what to do with related entities (e.g., if you save a parent, should it save children too?).
+
+java
+Copy
+Edit
+@OneToMany(cascade = CascadeType.ALL)
+private List<Address> addresses;
+✅ 20. How to create a Hibernate project using Spring Boot?
+Answer:
+
+Use spring-boot-starter-data-jpa
+
+Define DB properties in application.properties
+
+Use JPA annotations like @Entity, @Id
+

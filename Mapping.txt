@@ -1,0 +1,66 @@
+Unidirectional Mapping : 
+
+Map in One table is called unidirectional mapping.
+
+Ex:
+
+@Entity
+@Table(name="product")
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    private Laptop laptop;
+
+}
+
+Or
+
+@Entity
+@Table(name="laptop")
+public class Laptop {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long laptopId;
+}
+
+
+Bidirectional Mapping:
+
+Mapping in both table is called as bidirectional mapping.
+
+Ex:
+
+
+@Entity
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    private Laptop laptop;
+
+}
+
+Or
+
+@Entity
+@Table(name="laptop")
+public class Laptop {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long laptopId;
+	
+	@OneToOne
+	private Laptop laptop;
+}
+
+Mapping: it depends on table , if you joining two tables  then you can use both side then inside both table 
+foreign key ic created. 
