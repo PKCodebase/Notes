@@ -1,0 +1,55 @@
+1.How to configure Datasource using JDBC:
+=>
+@Configuration
+@ComponentScan(basePackages = "com.example")
+public class JdbcConfig {
+
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource ds = new DriverManagerDataSource();
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ds.setUrl("jdbc:mysql://localhost:3306/testdb");
+        ds.setUsername("root");
+        ds.setPassword("root");
+        return ds;
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
+}
+
+2.Spring+Hibernate:
+i.) we need to write multiple number of dependency.
+ii.)Configure the following 4 beans.
+=>Ds,Sf,Ht,HtM
+
+3.SprinBoot+Hibernate:
+i.)Only one dependency need => Starter Dta Jpa
+ii.)Configure the following beans. 
+=>SF,HT(Outdated),HtM(Hibernate Template Manager)
+
+4.Spring + Jpa :
+i.) we need to write multiple number of dependency.
+ii.)Configure 3 beans:
+=>Ds,EMF(Entity Manager Factory),JTM(JpaTransaction Manager)
+Ex:
+Implemantation class ,we will  @PersistentContext EntityManager enatityManager.
+And manually write query(JPQl)
+=>enatityManager.persit(cust)
+
+
+
+5.SprinBoot+Jpa:
+i.)Only one dependency need.
+ii.)No beans to configure manually.
+=>Autoconfigure all the beans (DS,EMF,JTM)
+
+
+
+
+
+
+
+

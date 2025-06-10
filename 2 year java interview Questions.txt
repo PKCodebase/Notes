@@ -1,0 +1,28 @@
+🔹 Core Java & OOPs
+●What are the 4 pillars of OOPs? Give real-time examples.
+●Difference between == and .equals() in Java?
+●Can we override a static method?
+●Where did you use abstract classes and interfaces in your project?
+
+🔹 Spring Boot & Project Questions
+●What annotations do you commonly use in Spring Boot and why?
+●Explain dependency injection in your project.
+●Difference between @Component, @Service, and @Repository.
+●Can you describe your module and how it fit in the overall project?
+
+🔹 Scenario-Based Questions
+●Your API is returning 500 error in production — how will you debug it?
+●You pushed code to production and something broke. What’s your first step?
+●There’s a memory leak issue. How would you identify and fix it?
+●A client reports a bug but QA didn’t catch it. What do you do?
+●You got a NullPointerException in logs but not locally. How do you trace it?
+●How would you prevent frequent DB connection failures in your app?
+
+🔹 Exception Handling
+●Checked vs Unchecked exceptions?
+●Global exception handling in Spring Boot using @ControllerAdvice.
+
+🔹 Coding Challenges
+●Write a Java method to reverse a string manually.
+●Find the second largest number in an array.
+●Check if a given string is a palindrome.
